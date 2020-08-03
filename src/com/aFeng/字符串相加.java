@@ -28,7 +28,7 @@ public class 字符串相加 {
          * 知道两个指针都左移到头了并且没有进位,则运算结束.因为是使用StringBuffer来存储结果,这个顺序是颠倒的,最后反转一下即可.
          */
         int i = num1.length() - 1, j = num2.length() - 1, add = 0;
-        StringBuffer ans = new StringBuffer();
+        StringBuilder ans = new StringBuilder();
         while (i >= 0 || j >= 0 || add != 0) {
             int x = i >= 0 ? num1.charAt(i) - '0' : 0;
             int y = j >= 0 ? num2.charAt(j) - '0' : 0;
