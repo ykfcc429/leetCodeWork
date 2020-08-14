@@ -3,6 +3,8 @@ package com.aFeng;
 
 import redis.clients.jedis.Jedis;
 
+import java.util.ArrayList;
+
 
 /**
  * 一个简单的redis分布式锁
@@ -13,24 +15,22 @@ import redis.clients.jedis.Jedis;
  */
 public class Main {
 
-    public static void main(String[] args) {
-        Lock lock = new Lock();
-        Thread thread = new Thread(lock);
-        Thread thread1 = new Thread(lock);
-        Thread thread2 = new Thread(lock);
-        thread.start();
-        thread1.start();
-        thread2.start();
+    public static void main(String[] args) throws InterruptedException {
+//        Lock lock = new Lock();
+        for (int i = 0; i < 20; i++) {
+            new Thread(()->{
+                Jedis jedis = new Jedis();
+                jedis.lpush("goodsList",Thread.currentThread().getName());
+                jedis.close();
+            }).start();
+        }
     }
 
 }
-class Lock implements Runnable{
+
+class HandleMq implements Runnable{
+    @Override
     public void run() {
-        Jedis jedis = new Jedis();
-        Long goods = jedis.setnx("goods", "0");
-        if (goods > 0) {
-            jedis.incr("myNum");
-        }
-        jedis.del("goods");
+
     }
 }
