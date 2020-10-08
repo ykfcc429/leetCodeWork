@@ -62,6 +62,7 @@ public class 公交站之间的距离 {
      * 然后计算其中一种方式的距离,比如顺时针的距离,然后总距离减去顺时针的距离为逆时针的距离,两个取其小
      */
     static int method(int[] distance, int start, int destination) {
+
         int total = 0;
         for (int i : distance) {
             total += i;
