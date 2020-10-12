@@ -2,6 +2,7 @@ package com.aFeng;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -23,30 +24,13 @@ public class 两数之和 {
         }
     }
 
-    /**
-     * 感觉不是特别好的解决方法,
-     * 因为想通过数组排序后双指针的方法,但是排序就会丢失下标,所以必须要一个新建一个list对象来专门存储下标,这里是一大败笔
-     * 接下来的解题思路就非常清晰了,两个指针分别指向排序后数组的头尾,如果两数之和小于target那么就把左边的指针右移,反之移动
-     * 右边的指针,这样的空间复杂度就是O(2);因为我遍历了两次.........
-     */
     static int[] method(int[] nums,int target){
-        List<Integer> list = new ArrayList<>();
-        for (int num : nums) {
-            list.add(num);
-        }
-        Arrays.sort(nums);
-        int l = 0;
-        int r = nums.length-1;
-        while (l<r){
-            int num = nums[l]+nums[r];
-            if(num == target){
-                return new int[]{list.indexOf(nums[l]),list.indexOf(nums[r])};
-            }else if(num>target){
-                r--;
-            }else {
-                l++;
+        for(int index=0;index<nums.length-2;++index){
+            for(int j=index+1;j<nums.length-1;++j){
+                if(nums[index]+nums[j]==target)
+                    return new int[]{index,j};
             }
         }
-        return new int[]{0,0};
+        return new int[]{};
     }
 }
