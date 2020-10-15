@@ -3,8 +3,7 @@ package com.aFeng;
 
 import redis.clients.jedis.Jedis;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 
 /**
@@ -12,6 +11,15 @@ import java.util.List;
 public class Main {
 
     public static void main(String[] args) throws InterruptedException {
+        Map<Integer,String > set = new TreeMap<>();
+        set.put(2,"2");
+        set.put(7,"7");
+        set.put(1,"1123");
+        set.put(5,"5");
+        set.put(3,"3");
+        Iterator<Integer> iterator = set.keySet().iterator();
+        while (iterator.hasNext())
+            System.out.println(set.get(iterator.next()));
     }
 
     public List<Double> averageOfLevels(TreeNode root) {
