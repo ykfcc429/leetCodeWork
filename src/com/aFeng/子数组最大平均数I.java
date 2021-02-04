@@ -11,16 +11,15 @@ public class 子数组最大平均数I {
     }
 
     public static double findMaxAverage(int[] nums, int k) {
-        double result = 0;
         int sum = 0;
         for (int i = 0; i < k; i++) {
             sum += nums[i];
         }
-        result = (double)sum/(double)k;
+        int max = sum;
         for (int i = k; i < nums.length; i++) {
             sum = sum+nums[i]-nums[i-k];
-            result = Double.max(result,(double)sum/(double)k);
+            max = Math.max(sum,max);
         }
-        return result;
+        return (double)max/(double)k;
     }
 }
