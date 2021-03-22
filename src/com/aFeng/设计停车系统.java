@@ -6,7 +6,6 @@ package com.aFeng;
  */
 public class 设计停车系统 {
 
-
 }
 
 class ParkingSystem{
