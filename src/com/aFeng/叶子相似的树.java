@@ -23,7 +23,7 @@ public class 叶子相似的树 {
         return seq1.equals(seq2);
     }
 
-    public void dfs(TreeNode node, List<Integer> seq) {
+    private void dfs(TreeNode node, List<Integer> seq) {
         if (node.left == null && node.right == null) {
             seq.add(node.val);
         } else {
